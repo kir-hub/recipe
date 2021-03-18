@@ -1,0 +1,11 @@
+[
+    {
+        "title": "borsh",
+        "meal-type": "supper",
+        "people-it-serves": "1",
+        "difficulty": "intermediate",
+        "ingredients": ["water", "garlic", "carrot", "potato", "tomato", "beet", "meat", "cabbage"],
+        "steps": ["boil water", "throw meat in water", "slice vegetables", "make tomato dope", "..."]
+
+    }
+]
