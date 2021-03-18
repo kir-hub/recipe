@@ -10,9 +10,7 @@ export default function Item(props) {
     const fetchMeal= async()=>{
         const response = await getMeal()
         const data = response.data.meals[0]
-        console.log(data);
         setMeal(data)
-        console.log(meal);
     }
     
     useEffect(()=>{
