@@ -1,12 +1,11 @@
 import React, {useState, useCallback, useEffect} from 'react'
 import getMeal from './api'
-import response from './api'
 
 export default function Item(props) {
     const [isFull, setFull] = useState(false)
     const [meal, setMeal] = useState('')
     
-    const showCard = useCallback(()=>setFull(prevState => !prevState))
+    const showCard = useCallback(()=>setFull(prevState => !prevState),[])
     const fetchMeal= async()=>{
         const response = await getMeal()
         const data = response.data.meals[0]
