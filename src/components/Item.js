@@ -47,7 +47,7 @@ export default function Item(props) {
     
     return (
         <div>
-            <ul>{meal ? meal.map((item,index)=> <li onClick={()=>getCard(index)}>{item.strMeal}</li>) : 'loading...'}</ul>
+            <ul>{meal ? meal.map((item,index)=> <li onClick={getCard.bind(index)}>{item.strMeal}</li>) : 'loading...'}</ul>
             {
                 isFull &&
                 <>
