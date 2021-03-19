@@ -1,5 +1,5 @@
-import React, {useState, useCallback, useEffect} from 'react'
-import getMeal from './api'
+import React, {useState, useCallback, useEffect, useMemo} from 'react'
+import getMeal from '../utils/api/meal'
 
 export default function Item(props) {
     const [isFull, setFull] = useState(false)
@@ -7,17 +7,22 @@ export default function Item(props) {
     
     const showCard = useCallback(()=>setFull(prevState => !prevState),[])
     const fetchMeal= async()=>{
-        const response = await getMeal()
-        const data = response.data.meals[0]
-        setMeal(data)
+        try {
+            const response = await getMeal()
+            const {data: {meals =[]} = {}} = response || {}
+            const data = meals[0] || {}
+            setMeal(data)
+        } catch (e) {
+            console.error(e);
+        }
     }
     
     useEffect(()=>{
         fetchMeal()
     },[])
 
-    const ingredient = ()=>{
-        const arr = []
+    const arr = useMemo(()=> {
+         const arr = []
         for(let i = 1; i <=20; i++){
             const key = `strIngredient${i}`
             if(meal[key] !== "" && meal[key] !== null){
@@ -25,8 +30,7 @@ export default function Item(props) {
             }
         }
         return arr
-    }
-    const arr = ingredient()
+    })
     
     return (
         <div>
